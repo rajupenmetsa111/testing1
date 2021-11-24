@@ -1,0 +1,31 @@
+version: 0.1
+
+phases:
+  install:
+    commands:
+      - echo installing nodejs...
+      - curl -sL https://deb.nodesource.com/setup_16.x | sed 's|https://|http://|' | bash -
+      - apt-get install -y nodejs  #aws code build use ubuntu environement
+      - apt-get install -y build-essential
+  pre_build:
+    commands:
+      - echo installing dependencies...
+      - npm install -g @angular/cli
+      - npm install
+  build:
+    commands:
+      # - echo testing...
+      # - echo building...
+      - ng build --prod
+  post_build:
+    commands:
+      - pwd
+      - ls
+      - mkdir -p ./dist/out-tsc
+      - mv appspec.yml ./dist/out-tsc/
+      - mv scripts1 ./dist/out-tsc/
+artifacts:
+  files:
+    - "**/*"
+  discard-paths: no
+  base-directory: dist/out-tsc
