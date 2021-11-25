@@ -1,0 +1,4 @@
+#!/bin/bash
+
+rm -rf /var/www/mbsit-angular-dist/website
+mkdir /var/www/mbsit-angular-dist/website
