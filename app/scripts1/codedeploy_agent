@@ -1,0 +1,6 @@
+#!/bin/bash
+sudo yum update -y
+sudo yum install ruby wget -y
+wget https://aws-codedeploy-ap-south-1.s3.amazonaws.com/latest/install
+chmod +x ./install
+sudo ./install auto 
